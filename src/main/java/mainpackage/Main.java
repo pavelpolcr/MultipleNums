@@ -5,6 +5,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+        //--generate test arrays
         long startTime = System.nanoTime();
         int[] nums = generateBigArray();
         long generateTime=System.nanoTime();
@@ -13,12 +14,13 @@ public class Main {
         startTime = System.nanoTime();
         int[] nums2 = new int[1000000];
         for(int i = 0; i<nums2.length;i++){
-            nums[i]=i;
+            nums2[i]=i;
         }
-        nums[625623]=1900;
-        System.out.print("Generovani  - 1 mil cisel, pouze 1 duplicita");
+        nums2[625623]=1900; // just one duplicity in Test n. 2
+        System.out.print("Generovani  - 1 mil cisel, pouze 1 duplicita: ");
         System.out.println((generateTime-startTime)/1000000);
         generateTime=System.nanoTime();
+        //--Finding duplicities - measuring raw method execution time.
         startTime = System.nanoTime();
         Integer[] output = evaluate(nums);
         long maptime = System.nanoTime();
@@ -40,9 +42,13 @@ public class Main {
         System.out.print("Test 2 Reseni pomoci sort, pole a listu:");
         System.out.println((sortTime-startTime)/1000000);
 
-        //for(int n:output) {
-        //    System.out.println(n);
-       //}
+        //--just checking results from Test 2
+        for(int n:output3) {
+            System.out.println(n);
+       }
+        for(int n:output4) {
+            System.out.println(n);
+        }
 
 
     }
